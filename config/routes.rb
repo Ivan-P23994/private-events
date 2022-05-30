@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       get "users", to: "devise/sessions#new"
     end
     
-  resources :users, :events
+  resources :events
 
   root "events#index"
 end
