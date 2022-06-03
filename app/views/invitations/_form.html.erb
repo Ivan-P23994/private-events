@@ -10,8 +10,15 @@
       </ul>
     </div>
   <% end %>
-
-<div class="inline">
-  <%= form.submit value: "Join" %>
-</div>
+ <%= form.hidden_field :attendee_id, value: current_user.id%>
+  <%= form.hidden_field :event_id , value: params[:event_id]%>
+  <div class="inline">
+    <%= form.submit value: "Join" %>
+  </div>
 <% end %>
+
+
+<%= params.inspect %>
+<%= current_user.id%>
+<br>
+<br>

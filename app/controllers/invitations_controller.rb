@@ -21,7 +21,7 @@ class InvitationsController < ApplicationController
 
   # POST /invitations or /invitations.json
   def create
-    @invitation = Invitation.new(invitation_params)
+    @invitation = current_user.invitations.build(invitation_params)
 
     respond_to do |format|
       if @invitation.save
