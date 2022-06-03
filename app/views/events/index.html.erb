@@ -1,3 +1,9 @@
+<% if user_signed_in? %>
+   <br><p><%= current_user.name %></p><br>
+<% else %>
+   <br><span>Please Sign In</span><br>
+<% end %>
+ 
  <% if user_signed_in? %>
     <%= button_to 'New Event', new_event_path, method: :get, class:'bg-blue-500 hover: bg-blue-600 font-bold text-white rounded' %>
     <%= button_to 'My Events', user_path(current_user), method: :get, class:'bg-blue-500 hover: bg-blue-600 font-bold text-white rounded' %>

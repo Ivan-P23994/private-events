@@ -1,2 +1,12 @@
-<%= @event.title %>
-<%= @event.location %>
+<%= @chosen_event.title %>
+<%= @chosen_event.location %>
+
+
+
+<%= form_with model: @invitation do |form|%>
+  <%= form.hidden_field :attendee_id, value: current_user.id%>
+  <%= form.hidden_field :event_id, value: params["id"]%>
+  <div class="inline">
+    <%= form.submit value: "Join" %>
+  </div>
+<% end %>
