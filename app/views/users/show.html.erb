@@ -5,3 +5,10 @@
   <%= event.title %>
   <%= event.location %>
 <% end %>
+
+<p>attended events</p><br>
+<% @attended_events.each do |event|%>
+  <span><%= event.title %><br></span>
+<% end %>
+
+<%= link_to "Home", root_path %>
