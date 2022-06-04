@@ -6,9 +6,19 @@
   <%= event.location %>
 <% end %>
 
-<p>attended events</p><br>
-<% @attended_events.each do |event|%>
-  <span><%= event.title %><br></span>
+<p>upcoming events</p><br>
+<% @future_events.each do |event|%>
+  
+  <%= event.title if event.attendees.find_by(id: current_user.id)%><br>
+  
 <% end %>
+  <br>
+<p>past events</p><br>
+<% @past_events.each do |event|%>
+  
+   <%= event.title if event.attendees.find_by(id: current_user.id)%><br>
+
+<% end %>
+
 
 <%= link_to "Home", root_path %>
