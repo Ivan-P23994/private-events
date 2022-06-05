@@ -13,7 +13,12 @@
     <%= button_to 'Register', new_user_registration_path, method: :get, class:'bg-blue-500 hover: bg-blue-600 font-bold text-white rounded' %>
 <% end %>
 
+<h1>upcoming events</h1>
+<% @events.upcoming_events.each do |event| %>
+  <%= render event%>
+<% end %>
 
-<% @events.each do |event| %>
+<h1>past events</h1>
+<% @events.past_events.each do |event| %>
   <%= render event%>
 <% end %>
