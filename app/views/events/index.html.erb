@@ -1,24 +1,39 @@
-<% if user_signed_in? %>
-   <br><p><%= current_user.name %></p><br>
-<% else %>
-   <br><span>Please Sign In</span><br>
-<% end %>
- 
- <% if user_signed_in? %>
-    <%= button_to 'New Event', new_event_path, method: :get, class:'bg-blue-500 hover: bg-blue-600 font-bold text-white rounded' %>
-    <%= button_to 'My Events', user_path(current_user), method: :get, class:'bg-blue-500 hover: bg-blue-600 font-bold text-white rounded' %>
-    <%= button_to 'Logout', destroy_user_session_path, method: :delete, class:'bg-blue-500 hover: bg-blue-600 font-bold text-white rounded' %>
-  <% else %>
-    <%= button_to 'Sign In', new_user_session_path, method: :get, class:'bg-blue-500 hover: bg-blue-600 font-bold text-white rounded' %>
-    <%= button_to 'Register', new_user_registration_path, method: :get, class:'bg-blue-500 hover: bg-blue-600 font-bold text-white rounded' %>
-<% end %>
+<div class="flex flex-row items-center justify-between h-16 mb-10">
+  <div class="flex flex-row">
+    <% if user_signed_in? %>
+       <br><p><%= current_user.name %></p><br>
+    <% else %>
+       <br><span>Please Sign In</span><br>
+    <% end %>
+  </div> 
+  
+   <div class="flex flex-row  w-1/3">
+     <% if user_signed_in? %>
+        <%= button_to 'New Event', new_event_path, method: :get, class:'bg-blue-500 font-mono mx-4  w-24 px-1 hover: bg-blue-600 text-white rounded' %>
+        <%= button_to 'My Events', user_path(current_user), method: :get, class:'bg-blue-500 mx-4 font-mono w-24 px-1 hover: bg-blue-600 text-white rounded' %>
+        <%= button_to 'Logout', destroy_user_session_path, method: :delete, class:'bg-blue-500 mx-4  font-mono w-24 px-1 hover: bg-blue-600 text-white rounded' %>
+      <% else %>
+        <%= button_to 'Sign In', new_user_session_path, method: :get, class:'bg-blue-500 mx-4   font-mono w-24 px-1hover: bg-blue-600 text-white rounded' %>
+        <%= button_to 'Register', new_user_registration_path, method: :get, class:'bg-blue-500 mx-4  w-24 px-1 font-mono hover: bg-blue-600 text-white rounded' %>
+       <% end %>
+   </div>
+</div>
 
-<h1>upcoming events</h1>
-<% @events.upcoming_events.each do |event| %>
-  <%= render event%>
-<% end %>
+<p class="notice flex flex-row  text-green-500 items-center justify-center w-screen h-2vh"><%= notice %></p>
+<p class="alert flex flex-row  text-red-500 items-center justify-center w-screen h-2vh"><%= alert %></p>
 
-<h1>past events</h1>
-<% @events.past_events.each do |event| %>
-  <%= render event%>
-<% end %>
+<div class="flex flex-row justify-around w-screen ">
+  <div class="flex flex-col  items-center mr-12">
+    <h1>upcoming events</h1>
+    <% @events.upcoming_events.each do |event| %>
+      <%= render event%>
+    <% end %>
+  </div>
+  
+  <div class="flex flex-col items-center">
+    <h1>past events</h1>
+    <% @events.past_events.each do |event| %>
+      <%= render event%>
+    <% end %>
+  </div>
+</div>
